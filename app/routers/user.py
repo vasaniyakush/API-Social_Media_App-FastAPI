@@ -13,6 +13,9 @@ router = APIRouter(
 def create_user(user:schemas.UserCreate, db:Session = Depends(get_db)):
 
     #hash the pasword - user.password
+    new_user = db.query(models.User).filter(models.User.email == user.email)
+    if new_user is not None:
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail=f"User with email {user.email} already exists")
     hashed_password = utils.hash(user.password)
     user.password = hashed_password
     new_user = models.User(**user.dict())
