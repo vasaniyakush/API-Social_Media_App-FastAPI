@@ -5,10 +5,10 @@ After=network-online.target
 [Service]
 User=kush
 Group=kush
-WorkingDirectory=/home/kush/FastAPI/src/
-Environment="PATH=/home/kush/FastAPI/venv/bin"
+WorkingDirectory=/home/kush/Fast/src/
+Environment="PATH=/home/kush/Fast/venv/bin"
 EnvironmentFile=/home/kush/Fast/.env
-ExecStart=/home/kush/FastAPI/venv/bin/gunicorn -w 4 -k uvicorn.workers.UvicornWorker app.main2:app --bind 0.0.0.0:8000
+ExecStart=/home/kush/Fast/venv/bin/gunicorn -k uvicorn.workers.UvicornWorker app.main2:app --bind 0.0.0.0:8000
 
 [Install]
 WantedBy=multi-user.target
