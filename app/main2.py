@@ -1,25 +1,7 @@
-#using sqlalchemy
-# from cgitb import html
-# from pydoc import render_doc
-# import time
-# from turtle import pos, title
-# from typing import Optional, SupportsIndex, List
-# from fastapi import Response, status, HTTPException, Depends
-# from fastapi.params import Body
-# from fastapi.responses import HTMLResponse
-# import attendance
-# from random import randrange
-# import psycopg2
-# from psycopg2.extras import RealDictCursor
-# from sqlalchemy.orm import Session
-# from this import d
 from fastapi import FastAPI
 # from . import models, schemas,utils
 from .database import engine, get_db
 from .routers import post,user,auth,votes
-# from pydantic import BaseSettings
-# from.config import Settings
-# from app import database
 from fastapi.middleware.cors import CORSMiddleware
 # from .schemas import Post
 
@@ -27,7 +9,8 @@ from fastapi.middleware.cors import CORSMiddleware
 
 
 #-----------------------------------DATABASE CREATION----------------------------
-# models.Base.metadata.create_all(bind=engine)
+# models.Base.metadata.create_all(bind=engine) #we dont need this because now we use alembic 
+                                                #for table creation
 
 app = FastAPI()
 origins = ["*"]  # currently allows all domains
